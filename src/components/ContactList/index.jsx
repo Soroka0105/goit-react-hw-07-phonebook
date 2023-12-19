@@ -8,7 +8,7 @@ return (
 
     <ul>
         {contacts.map(el => (
-           <li><ContactElement key = {el.id} elm ={el}/></li>
+           <ContactElement key = {el.id} elm ={el}/>
        ))}
        
     </ul>

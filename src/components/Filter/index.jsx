@@ -1,10 +1,7 @@
 
 
 export const Filter = ({ value, onChange }) => {
-    // const dispatch = useDispatch()
-    // const filteredvalue = (value) => {
-    //     dispatch(filerAction(value))
-    // }
+ 
 
     return(
         <>
