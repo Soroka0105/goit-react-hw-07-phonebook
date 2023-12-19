@@ -1,8 +1,11 @@
+import { addContact } from 'api/contacts'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 export const Form = (fu) => {
     const [name, setName] = useState('')
     const [phone, setPhone] = useState("")
+    const dispatch = useDispatch()
     const reset = () => {
         setName('')
         setPhone('')
@@ -11,8 +14,9 @@ export const Form = (fu) => {
 
       const handleSubmit = (e) => {
 		e.preventDefault()
-        fu.addContact(name, phone)
-      
+          dispatch(addContact({ name, phone }))
+          console.log(name)
+          console.log(phone)
         reset()
 	}
     const handleNameChange = evt => {

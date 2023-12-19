@@ -2,9 +2,10 @@ import { Form } from "./Form";
 import { ContactList } from "./ContactList";
 import { useDispatch} from "react-redux";
 import { Filter } from "./Filter";
-
 import { useEffect } from "react";
 import { fetchContacts } from "../api/contacts";
+// import { selectIsLoading, selectError } from "../redux/selectors";
+
 
 
 export const App = () => {
@@ -15,6 +16,7 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(fetchContacts())
+  
   }, [dispatch])
 
 
