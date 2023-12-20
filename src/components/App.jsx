@@ -4,23 +4,16 @@ import { useDispatch, useSelector} from "react-redux";
 import { Filter } from "./Filter";
 import { useEffect } from "react";
 import { fetchContacts } from "../api/contacts";
-import {handleFilter} from "../redux/contactSlice"
-import { selectIsLoading, selectError, selectFilter } from "../redux/selectors";
+import { selectIsLoading, selectError} from "../redux/selectors";
 
 
 
 export const App = () => {
   const dispatch = useDispatch();
-  const filter = useSelector(selectFilter)
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
- const ContactFilter = evt => {
-   const value = evt.currentTarget.value
-   dispatch(handleFilter(value))
-   
-  };
-console.log(filter)
+ 
 
   useEffect(() => {
     dispatch(fetchContacts())
@@ -42,7 +35,7 @@ console.log(filter)
     >
       <h1 style={{margin:0}}>Phonebook</h1>
       <Form />
-      <Filter value={filter} onChange={ContactFilter}/>
+      <Filter/>
       <h2>Contacts</h2>
     {isLoading && !error && <b>Request in progress...</b>}
       <ContactList/>

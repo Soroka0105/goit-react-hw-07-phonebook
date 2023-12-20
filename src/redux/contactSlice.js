@@ -10,10 +10,6 @@ const initialState = {
   filter: '',
 };
 
-export const handleFilter = (state, action) => {
-  state.contacts.filter = action.payload;
-};
-
 const handlePending = state => {
   state.isLoading = true;
 };
@@ -25,6 +21,11 @@ const handleRejected = (state, action) => {
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
+  reducers: {
+    addFilter(state, action) {
+      state.filter = action.payload;
+    },
+  },
 
   extraReducers: builder => {
     builder
@@ -54,3 +55,4 @@ const contactsSlice = createSlice({
   },
 });
 export const contactReducer = contactsSlice.reducer;
+export const { addFilter } = contactsSlice.actions;
