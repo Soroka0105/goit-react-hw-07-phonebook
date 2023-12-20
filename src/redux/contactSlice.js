@@ -40,6 +40,10 @@ const contactsSlice = createSlice({
       .addCase(addContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
+        const equalName = state.contacts.items.find(
+          elm => elm.name.toLowerCase() === action.payload.name
+        );
+        if (equalName) return alert(`${equalName.name} is already in contacts`);
         state.contacts.items.push(action.payload);
       })
       .addCase(addContact.rejected, handleRejected)
